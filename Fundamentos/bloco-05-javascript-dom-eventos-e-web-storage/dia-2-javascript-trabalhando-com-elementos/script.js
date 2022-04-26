@@ -19,3 +19,11 @@ elemento.nextSibling;
 console.log(elemento.nextElementSibling)
 /*Agora acesse o terceiroFilho a partir de pai .*/
 console.log(elementoPai.nextElementSibling.nextElementSibling);
+
+/* Dia 5.2
+Crie um irmão para elementoOndeVoceEsta .*/
+let elementoIrmao = document.createElement("section");
+elementoIrmao.innerText = "elementoIrmao";
+document.querySelector("#pai").appendChild(elementoIrmao);
+console.log(elementoIrmao);
+
