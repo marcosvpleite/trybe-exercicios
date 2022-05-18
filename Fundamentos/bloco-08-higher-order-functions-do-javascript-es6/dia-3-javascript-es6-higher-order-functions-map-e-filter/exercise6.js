@@ -60,16 +60,16 @@ const books = [
       releaseYear: 1928,
     },
   ];
-  // 🚀 5 - Crie um array em ordem alfabética apenas com os nomes de todas as pessoas autoras de ficção científica ou fantasia.
   const expectedResult = [
-    'Frank Herbert',
-    'George R. R. Martin',
-    'Isaac Asimov',
-    'J. R. R. Tolkien',
+    'O Senhor dos Anéis',
+    'Fundação',
+    'O Chamado de Cthulhu',
   ];
   
-  function fantasyOrScienceFictionAuthors() {
-    return books.filter((element)=> element.genre ==='Fantasia' || element.genre ==='Ficção Científica')  
-    .map((element)=>element.author.name).sort();
+  // 🚀 6 - Crie um array com o nome de todos os livros com mais de 60 anos de publicação.
+  function oldBooks() {
+    return books.filter((element)=> 2022 - element.releaseYear > 60).map((element)=> element.name);
   };
-  console.log(fantasyOrScienceFictionAuthors());
+  console.log(oldBooks());
+ 
+ 
