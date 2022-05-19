@@ -19,3 +19,4 @@ const fruitSalad = () => {
   };
   
   console.log(fruitSalad());
+  
