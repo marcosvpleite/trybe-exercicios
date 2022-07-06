@@ -20,19 +20,25 @@ class App extends React.Component {
     console.log("clicou no botão 1!");
     this.setState((prevState) => ({
       numeroDeCliques1: prevState.numeroDeCliques1 + 1
-    }))
+    }), () => {
+      console.log(`Botão 1 ${this.getButtonColor(this.state.numeroDeCliques1)}`);
+    })
   }
   handleClick2() {
     console.log("clicou no botão 2!");
     this.setState((prevState) => ({
       numeroDeCliques2: prevState.numeroDeCliques2 + 1
-    }))
+    }), () => {
+      console.log(`Botão 2 ${this.getButtonColor(this.state.numeroDeCliques2)}`);
+    })
   }
   handleClick3() {
     console.log("clicou no botão 3!");
     this.setState((prevState) => ({
       numeroDeCliques3: prevState.numeroDeCliques3 + 1
-    }))
+    }), () => {
+      console.log(`Botão 3 ${this.getButtonColor(this.state.numeroDeCliques3)}`);
+    })
   }
   getButtonColor(num) {
     return num % 2 === 0 ? 'green' : 'red';
