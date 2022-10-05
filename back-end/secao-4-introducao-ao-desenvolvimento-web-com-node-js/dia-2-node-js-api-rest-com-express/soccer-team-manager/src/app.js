@@ -1,23 +1,21 @@
 const express = require('express');
+require('express-async-errors');
+const apiCredentials = require('./middlewares/apiCredentials');
+const { existingId, teams } = require('./middlewares/existingId');
 
 const app = express();
 
+app.use(apiCredentials);
 app.use(express.json());
 
-const teams = [
-    {
-      id: 1,
-      name: 'São Paulo Futebol Clube',
-      initials: 'SPF',
-    },
-    {
-      id: 2,
-      name: 'Clube Atlético Mineiro',
-      initials: 'CAM',
-    },
-  ];
-
 // app.get('/', (_req, res) => res.status(200).json({ message: 'Olá Mundo!' }));
+
+// usa o middleware
+app.get('/teams/:id', existingId, (req, res) => {
+  const id = Number(req.params.id);
+  const team = teams.find((t) => t.id === id);
+  res.json(team);
+});
 
 app.get('/teams', (_req, res) => {
     res.status(200).json({ teams });
@@ -30,7 +28,7 @@ app.post('/teams', (req, res) => {
     res.status(201).json({ team: newTeam });
 });
 
-app.put('/teams/:id', (req, res) => {
+app.put('/teams/:id', existingId, (req, res) => {
     const { id } = req.params;
     const { name, initials } = req.body;
     let updatedTeam;
@@ -48,7 +46,7 @@ app.put('/teams/:id', (req, res) => {
     res.status(200).json({ updatedTeam });
   });
 
-  app.delete('/teams/:id', (req, res) => {
+  app.delete('/teams/:id', existingId, (req, res) => {
     const { id } = req.params;
     const arrayPosition = teams.findIndex((team) => team.id === Number(id));
     teams.splice(arrayPosition, 1);
