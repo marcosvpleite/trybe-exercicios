@@ -47,12 +47,22 @@ app.put('/teams/:id', existingId, (req, res) => {
     res.status(200).json({ updatedTeam });
   });
 
-  app.delete('/teams/:id', existingId, (req, res) => {
-    const { id } = req.params;
-    const arrayPosition = teams.findIndex((team) => team.id === Number(id));
-    teams.splice(arrayPosition, 1);
-  
-    res.status(200).end();
-  });
+app.delete('/teams/:id', existingId, (req, res) => {
+  const { id } = req.params;
+  const arrayPosition = teams.findIndex((team) => team.id === Number(id));
+  teams.splice(arrayPosition, 1);
+
+  res.status(200).end();
+});
+
+app.use((err, _req, _res, next) => {
+  console.error(err.stack);
+  // passa o erro para o próximo middleware
+  next(err);
+});
+
+app.use((err, _req, res, _next) => {
+  res.status(500).json({ message: `Algo deu errado! Mensagem: ${err.message}` });
+});
 
 module.exports = app;
