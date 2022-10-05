@@ -1,5 +1,6 @@
 const express = require('express');
 require('express-async-errors');
+
 const apiCredentials = require('./middlewares/apiCredentials');
 const { existingId, teams } = require('./middlewares/existingId');
 
