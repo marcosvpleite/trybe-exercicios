@@ -1,0 +1,19 @@
+{
+  "name": "cacao-trybe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests/**/*.test.js --exit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "4.3",
+    "express": "4.17"
+  },
+  "devDependencies": {
+    "chai-http": "4.3"
+  }
+}
