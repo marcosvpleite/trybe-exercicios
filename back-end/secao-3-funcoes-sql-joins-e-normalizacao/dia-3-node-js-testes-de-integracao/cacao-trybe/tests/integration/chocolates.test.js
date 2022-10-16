@@ -54,6 +54,7 @@ describe('Testando a API Cacao Trybe', function () {
         sinon.stub(fs.promises, 'readFile').resolves(mockFile);
 
     })
+        sinon.stub(fs.promises, 'writeFile').resolves();
 
     afterEach(function () {
 
